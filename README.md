@@ -1,9 +1,38 @@
-1/ 
+# z3t3t1c_infra
+
+## Homework 06
+Q: Create bash scripts for installation of Ruby, MongoDB and deployment of the reddit-app. Commit scripts with executable permissions.
+A: Please find install_ruby.sh, install_mongodb.sh and deploy.sh respectively.
+
+Q: Based on previous task, make one startup script and provide gcloud command to create an instance.
+A: Startup script named startup.sh. Command specified below:
+```bash
+gcloud compute instances create reddit-app \
+  --boot-disk-size=10GB \
+  --image-family ubuntu-1604-lts \
+  --image-project=ubuntu-os-cloud \
+  --machine-type=g1-small \
+  --tags puma-server \
+  --restart-on-failure \
+  --zone europe-west1-b \
+  --metadata startup-script-url="https://raw.githubusercontent.com/Otus-DevOps-2017-11/z37371c_infra/Infra-2/startup.sh"
+```
+After instance being created, you can check startup script output as following (replace project id with your own one):
+```bash
+gcloud compute --project=infra-189307 instances get-serial-port-output reddit-app --zone europe-west1-b | grep startup-script
+```
+
+## Homework 05
+1/
 Q: One-line command to connect to internal host?
-A: ssh -A -t appuser@35.205.38.154 ssh appuser@10.132.0.3
+A: 
+```bash
+ssh -A -t appuser@35.205.38.154 ssh appuser@10.132.0.3
+```
 
 Q: Propose solution to connect to internal host using alias, e.g. "ssh internalhost" 
 A: Add following lines to ~/.ssh/config then run "ssh internalhost":
+```bash
 Host bastion
 Hostname 35.205.38.154
 User appuser
@@ -11,7 +40,7 @@ User appuser
 Host internalhost
 User appuser
 ProxyCommand ssh -q bastion nc -q0 10.132.0.3 22
-
+```
 2/
 Files otus_test_bastion.ovpn and setupvpn.sh are placed into repository.
 
