@@ -30,7 +30,6 @@ gcloud compute --project=infra-189307 \
 ## Homework 05
 1/
 Q: One-line command to connect to internal host?
-A: 
 ```bash
 ssh -A -t appuser@35.205.38.154 ssh appuser@10.132.0.3
 ```
