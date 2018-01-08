@@ -8,7 +8,8 @@ Q: Investigate another builder options for GCP.
 A: Additional options are used within template [packer/ubuntu16.json](/packer/ubuntu16.json).   
    
 Q: Create backed image so that reddit application will start automatically when instance is created.  
-A: Packer template for backed image is packer/immutable.json. Configuration and deployment scripts are available at [packer/scripts](packer/scripts). Systemd unit definition is located at [packer/files/puma.service](packer/files/puma.service).  
+A: Packer template for backed image is packer/immutable.json. Configuration and deployment scripts are available at [packer/scripts](packer/scripts). Systemd unit definition is located at [packer/files/puma.service](packer/files/puma.service).    
+
 Q: Create script to start instance using the image prepared in previous step.  
 A: Script is located at [config-scripts/create-reddit-vm.sh](config-scripts/create-reddit-vm.sh)   
   
