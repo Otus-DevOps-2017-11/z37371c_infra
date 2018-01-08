@@ -9,9 +9,8 @@ A: Additional options are used within template [packer/ubuntu16.json](/packer/ub
    
 Q: Create backed image so that reddit application will start automatically when instance is created.  
 A: Packer template for backed image is packer/immutable.json. Configuration and deployment scripts are available at [packer/scripts](packer/scripts). Systemd unit definition is located at [packer/files/puma.service](packer/files/puma.service).  
-
 Q: Create script to start instance using the image prepared in previous step.  
-A: Script is located at [config-scripts/deploy-reddit-vm.sh](config-scripts/deploy-reddit-vm.sh)   
+A: Script is located at [config-scripts/create-reddit-vm.sh](config-scripts/create-reddit-vm.sh)   
   
 ## Homework 06
 Q: Create bash scripts for installation of Ruby, MongoDB and deployment of the reddit-app. Commit scripts with executable permissions.  
