@@ -1,19 +1,19 @@
 # z3t3t1c_infra
 
 ## Homework 07
-Q: Rework packer template so that user-defined variables will be used. 
-A: Template ubuntu16.json is written in the way that user variables are requred to build an image. Use packer/variables.json.example as a sample. 
+Q: Rework packer template so that user-defined variables will be used.  
+A: Template ubuntu16.json is written in the way that user variables are requred to build an image. Use packer/variables.json.example as a sample.  
+   
+Q: Investigate another builder options for GCP.  
+A: Additional options are used within template packer/ubuntu16.json.   
+   
+Q: Create backed image so that reddit application will start automatically when instance is created.  
+A: Packer template for backed image is packer/immutable.json. Configuration and deployment scripts are available at packer/scripts.   
+Systemd unit definition is located at packer/puma.service.   
  
-Q: Investigate another builder options for GCP.
-A: Additional options are used within template packer/ubuntu16.json. 
- 
-Q: Create backed image so that reddit application will start automatically when instance is created.
-A: Packer template for backed image is packer/immutable.json. Configuration and deployment scripts are available at packer/scripts. 
-Systemd unit definition is located at packer/puma.service. 
-
-Q: Create script to start instance using the image prepared in previous step.
-A: Script is located at config-scripts/deploy-reddit-vm.sh 
-
+Q: Create script to start instance using the image prepared in previous step.  
+A: Script is located at config-scripts/deploy-reddit-vm.sh   
+  
 ## Homework 06
 Q: Create bash scripts for installation of Ruby, MongoDB and deployment of the reddit-app. Commit scripts with executable permissions.  
 A: Please find install_ruby.sh, install_mongodb.sh and deploy.sh respectively.
