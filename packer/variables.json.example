@@ -1,0 +1,11 @@
+{
+ "proj_id": "my-project-id",
+ "source_image_family": "ubuntu-1604-lts",
+ "machine_type": "f1-micro",
+ "image_desc": "Ubuntu 16.04 with Ruby and MongoDB installed. Intended for deployment of Reddit-app.",
+ "disc_size": "10",
+ "disk_type": "pd-standard",
+ "network": "default",
+ "tags": "tag-specific-for-this-server"
+}
+

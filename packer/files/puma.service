@@ -1,0 +1,14 @@
+[Unit]
+Description=Puma server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/local/bin/puma -d
+WorkingDirectory=/home/puma/reddit/
+User=puma
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
