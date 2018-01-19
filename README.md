@@ -11,7 +11,7 @@ A: All requested tasks were performed, see [terraform/main.tf](terraform/main.tf
 Q: Task * (SSH keys)  
 A: See [terraform/main.tf](terraform/main.tf). Problem I've found it that after 'terraform apply' all keys set via web-interface will be lost.  
 
-Q: Task ** (Load-Balancing)
+Q: Task ** (Load-Balancing)  
 A: Instances defined using count, see [terraform/main.tf](terraform/main.tf). Load-balancing specific resources defined within [terraform/lb-http.tf](terraform/lb-http.tf).   
 
 
