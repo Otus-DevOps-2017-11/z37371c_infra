@@ -1,5 +1,20 @@
 # z3t3t1c_infra
 
+## Homework 08
+Q: Set of common tasks:  
+  1. Define input variable for private key.  
+  2. Define input variable for setting zone.  
+  3. Format all files using terraform fmt.  
+  4. Provide terraform.tfvars.example.  
+A: All requested tasks were performed, see main.tf, variables.tf and terraform.tfvars  
+
+Q: Task * (SSH keys)  
+A: See main.tf. Problem I've found it that after 'terraform apply' all keys set via web-interface will be lost.  
+
+Q: Task ** (Load-Balancing)
+A: Instances defined using count, see [terraform/main.tf](terraform/main.tf). Load-balancing specific resources defined within [terraform/lb-http.tf](terraform/lb-http.tf).   
+
+
 ## Homework 07
 Q: Rework packer template so that user-defined variables will be used.  
 A: Template [packer/ubuntu16.json](/packer/ubuntu16.json) is written in the way that user variables are requred to build an image. Use packer/variables.json.example as a sample.  
