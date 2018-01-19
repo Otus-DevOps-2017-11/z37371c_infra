@@ -6,10 +6,10 @@ Q: Set of common tasks:
   2. Define input variable for setting zone.  
   3. Format all files using terraform fmt.  
   4. Provide terraform.tfvars.example.  
-A: All requested tasks were performed, see main.tf, variables.tf and terraform.tfvars  
+A: All requested tasks were performed, see [terraform/main.tf](terraform/main.tf), [terraform/variables.tf](terraform/variables.tf) and [terraform/terraform.tfvars.example](terraform/terraform.tfvars.example)  
 
 Q: Task * (SSH keys)  
-A: See main.tf. Problem I've found it that after 'terraform apply' all keys set via web-interface will be lost.  
+A: See [terraform/main.tf](terraform/main.tf). Problem I've found it that after 'terraform apply' all keys set via web-interface will be lost.  
 
 Q: Task ** (Load-Balancing)
 A: Instances defined using count, see [terraform/main.tf](terraform/main.tf). Load-balancing specific resources defined within [terraform/lb-http.tf](terraform/lb-http.tf).   
