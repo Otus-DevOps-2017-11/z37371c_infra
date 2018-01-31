@@ -3,10 +3,15 @@
 ## Homework 09
 Q: Set of common tasks:  
   1. Remove main.tf, outputs.tf, terraform.tfvars, variables.tf from terraform folder.  
-  2. Use parameters in modules at your own choice.  
+  2. Add new parameters in modules at your own choice.  
   3. Format configuration files using terraform fmt.  
 
-A: All requested operations were performed. I have added parameter "prefix" to distinguish stage and prod environment.
+A: All requested operations were performed. I have added parameter "prefix" to distinguish stage and prod environment. There could be more parameters used but I just avoided making them for the sake of time.  
+I used different regions to start both environments simultaneously because europe-west1 has limit of 1 static IP:
+```bash
+* google_compute_address.app_ip: Error creating address: googleapi: Error 403: Quota 'STATIC_ADDRESSES' exceeded. Limit: 1.0 in region europe-west1., quotaExceeded
+
+```
 
 Q: Task * (Remote Backends)  
 A: I have created gcs bucket named "terraform-state-remote-backend" and used prod and stage prefixes respectively to keep state for two environments. Refer to [terraform/prod/main.tf](terraform/prod/main.tf) and [terraform/stage/main.tf](terraform/stage/main.tf) for details.  
