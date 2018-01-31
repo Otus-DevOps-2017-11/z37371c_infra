@@ -1,5 +1,29 @@
 # z3t3t1c_infra
 
+## Homework 09
+Q: Set of common tasks:  
+  1. Remove main.tf, outputs.tf, terraform.tfvars, variables.tf from terraform folder.  
+  2. Use parameters in modules at your own choice.  
+  3. Format configuration files using terraform fmt.  
+A: All requested operations were performed. I have added parameter "prefix" to distinguish stage and prod environment.
+
+Q: Task * (Remote Backends)  
+A: I have created gcs bucket named "terraform-state-remote-backend" and used prod and stage prefixes respectively to keep state for two environments. Refer to [terraform/prod/main.tf](terraform/prod/main.tf) and [terraform/stage/main.tf](terraform/stage/main.tf) for details.  
+When trying to do terraform apply on configuration already being deployed I observed lock as following:
+```bash
+Error: Error loading state: writing "gs://terraform-state-remote-backend/prod/default.tflock" failed: googleapi: Error 412: Precondition Failed, conditionNotMet
+Lock Info:
+  ID:        8aad7906-8917-bb00-2b8c-692fc18b6307
+  Path:      
+  Operation: OperationTypeApply
+  Who:       zetetic@sun
+  Version:   0.11.1
+  Created:   2018-01-31 14:03:57.574645559 +0000 UTC
+  Info:
+```
+Q: Task * (Provisioners)
+A: I used template to update systemd unit file with env variable $DATABASE_URL. See [terraform/app/main.tf](terraform/app/main.tf) and [terraform/app/files/puma_service.tpl](terraform/app/files/puma_service.tpl) for details. To set MongoDB binding address I used remote_exec with inline option, see [terraform/db/main.tf](terraform/db/main.tf).
+
 ## Homework 08
 Q: Set of common tasks:  
   1. Define input variable for private key.  
