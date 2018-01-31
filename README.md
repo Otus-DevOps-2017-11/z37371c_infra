@@ -5,6 +5,7 @@ Q: Set of common tasks:
   1. Remove main.tf, outputs.tf, terraform.tfvars, variables.tf from terraform folder.  
   2. Use parameters in modules at your own choice.  
   3. Format configuration files using terraform fmt.  
+
 A: All requested operations were performed. I have added parameter "prefix" to distinguish stage and prod environment.
 
 Q: Task * (Remote Backends)  
@@ -21,8 +22,8 @@ Lock Info:
   Created:   2018-01-31 14:03:57.574645559 +0000 UTC
   Info:
 ```
-Q: Task * (Provisioners)
-A: I used template to update systemd unit file with env variable $DATABASE_URL. See [terraform/app/main.tf](terraform/app/main.tf) and [terraform/app/files/puma_service.tpl](terraform/app/files/puma_service.tpl) for details. To set MongoDB binding address I used remote_exec with inline option, see [terraform/db/main.tf](terraform/db/main.tf).
+Q: Task * (Provisioners)  
+A: I used template to update systemd unit file with env variable $DATABASE_URL. See [terraform/modules/app/main.tf](terraform/modules/app/main.tf) and [terraform/modules/app/files/puma.service.tpl](terraform/modules/app/files/puma.service.tpl) for details. To set MongoDB binding address I used remote_exec with inline option, see [terraform/modules/db/main.tf](terraform/modules/db/main.tf).
 
 ## Homework 08
 Q: Set of common tasks:  
@@ -30,6 +31,7 @@ Q: Set of common tasks:
   2. Define input variable for setting zone.  
   3. Format all files using terraform fmt.  
   4. Provide terraform.tfvars.example.  
+
 A: All requested tasks were performed, see [terraform/main.tf](terraform/main.tf), [terraform/variables.tf](terraform/variables.tf) and [terraform/terraform.tfvars.example](terraform/terraform.tfvars.example)  
 
 Q: Task * (SSH keys)  
