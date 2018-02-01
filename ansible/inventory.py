@@ -6,6 +6,7 @@ import json
 if len(sys.argv) == 2 and (sys.argv[1] == '--list'):
     inventory=open('inventory.json','r')
     print json.dumps(json.load(inventory), indent=4)
+    inventory.close()
 elif len(sys.argv) == 3 and (sys.argv[1] == '--host'):
     print '{}'
 else:
