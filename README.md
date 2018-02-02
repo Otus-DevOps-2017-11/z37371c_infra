@@ -1,5 +1,23 @@
 # z3t3t1c_infra
 
+## Homework 10
+Q: Install ansible, create configuration and inventory files. Try using different modules.  
+A: I have installed ansible and executed all the tasks within homework. No issues occured.  
+
+Q: Task * (json inventory)  
+A: I used simple python script to read [ansible/inventory.json](ansible/inventory.json) and output its contents. See [ansible/inventory.py](ansible/inventory.py) for details.
+```bash
+$> ansible all -m ping -i inventory.py 
+appserver | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+dbserver | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+```
+
 ## Homework 09
 Q: Set of common tasks:  
   1. Remove main.tf, outputs.tf, terraform.tfvars, variables.tf from terraform folder.  
