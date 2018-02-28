@@ -6,6 +6,7 @@ A: I have followed the instruction and performed all requred tasks without any i
 
 Q: Research dynamic inventory capabilities for GCP.
 A: I used gce.py to generate inventory. I met minor issues with package versions before being able to run gce.py successfully. On CentOS 7 I had to uninstall gssapi package and install python2-crypto afterwards.   
+
 ```bash
 ~/z37371c_infra/ansible > ansible all -m ping -i inv/
 stage-reddit-db | SUCCESS => {
@@ -25,6 +26,7 @@ Q: Amend Packer provisioners.
 A: I succsessfully changed provisioners with Ansible ones and used dynamic inventory to run playbook. 
 <details>
   <summary>Click to see example of Packer output</summary>
+
 ```bash
  ~/z37371c_infra > /home/zetetic/bin/packer build -var-file=packer/variables.json  packer/app.json 
 googlecompute output will be in this color.
@@ -73,6 +75,7 @@ Build 'googlecompute' finished.
 
 <details>
   <summary>Click to see example of Ansible output</summary>
+
 ```bash
 ~/z37371c_infra/ansible > ansible-playbook -i inv/ site.yml 
 [DEPRECATION WARNING]: 'include' for playbook includes. You should use 'import_playbook' instead. This feature will be removed in version 2.8. Deprecation warnings can be disabled by 
