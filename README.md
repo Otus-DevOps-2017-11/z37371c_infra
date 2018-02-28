@@ -69,7 +69,7 @@ Build 'googlecompute' finished.
 ==> Builds finished. The artifacts of successful builds are:
 --> googlecompute: A disk image was created: reddit-app-base-1519830198
 ```
-</details>>
+</details>
 
 <details>
   <summary>Click to see example of Ansible output</summary>
