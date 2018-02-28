@@ -4,7 +4,7 @@
 Q: Try different approaches on how to use ansible: single playbook with single play, single playbook with multiple plays, multiple playbooks. Familiarize yourself with tasks, handlers, templates and variables. Know how to use modules and cycles.  
 A: I have followed the instruction and performed all requred tasks without any issues. Before proceeding with this homework I commented out terraform provisioners in order to get clean environment.
 
-Q: Research dynamic inventory capabilities for GCP.
+Q: Research dynamic inventory capabilities for GCP.   
 A: I used gce.py to generate inventory. I met minor issues with package versions before being able to run gce.py successfully. On CentOS 7 I had to uninstall gssapi package and install python2-crypto afterwards.   
 
 ```bash
