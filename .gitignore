@@ -4,3 +4,5 @@ variables.json
 *.tfstate.backup
 *.tfvars
 .terraform/
+*.retry
+gce_ansible_service_account.json

@@ -1,5 +1,136 @@
 # z3t3t1c_infra
 
+## Homework 11
+Q: Try different approaches on how to use ansible: single playbook with single play, single playbook with multiple plays, multiple playbooks. Familiarize yourself with tasks, handlers, templates and variables. Know how to use modules and cycles.  
+A: I have followed the instruction and performed all requred tasks without any issues. Before proceeding with this homework I commented out terraform provisioners in order to get clean environment.
+
+Q: Research dynamic inventory capabilities for GCP.   
+A: I used gce.py to generate inventory. I met minor issues with package versions before being able to run gce.py successfully. On CentOS 7 I had to uninstall gssapi package and install python2-crypto afterwards.   
+
+```bash
+~/z37371c_infra/ansible > ansible all -m ping -i inv/
+stage-reddit-db | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+stage-reddit-app | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+
+```
+
+I also reviewed dynamic inventory realizations based on terraform. All of them require addtional step - tags to be assigned to the machines.
+
+Q: Amend Packer provisioners.  
+A: I succsessfully changed provisioners with Ansible ones and used dynamic inventory to run playbook. 
+<details>
+  <summary>Click to see example of Packer output</summary>
+
+```bash
+ ~/z37371c_infra > /home/zetetic/bin/packer build -var-file=packer/variables.json  packer/app.json 
+googlecompute output will be in this color.
+
+==> googlecompute: Checking image does not exist...
+==> googlecompute: Creating temporary SSH key for instance...
+==> googlecompute: Using image: ubuntu-1604-xenial-v20180222
+==> googlecompute: Creating instance...
+    googlecompute: Loading zone: europe-west1-b
+    googlecompute: Loading machine type: f1-micro
+    googlecompute: Requesting instance creation...
+    googlecompute: Waiting for creation operation to complete...
+    googlecompute: Instance has been created!
+==> googlecompute: Waiting for the instance to become running...
+    googlecompute: IP: 35.195.46.204
+==> googlecompute: Waiting for SSH to become available...
+==> googlecompute: Connected to SSH!
+==> googlecompute: Provisioning with Ansible...
+==> googlecompute: Executing Ansible: ansible-playbook --extra-vars packer_build_name=googlecompute packer_builder_type=googlecompute -i /tmp/packer-provisioner-ansible128343860 /home/zetetic/z37371c_infra/ansible/packer_app.yml --private-key /tmp/ansible-key521614057
+    googlecompute:
+    googlecompute: PLAY [Install Ruby and Bundler] ************************************************
+    googlecompute:
+    googlecompute: TASK [Gathering Facts] *********************************************************
+    googlecompute: ok: [default]
+    googlecompute:
+    googlecompute: TASK [Update cache] ************************************************************
+    googlecompute: changed: [default]
+    googlecompute:
+    googlecompute: TASK [Install Ruby and Bundler] ************************************************
+    googlecompute: changed: [default] => (item=[u'ruby-full', u'ruby-bundler', u'build-essential'])
+    googlecompute:
+    googlecompute: PLAY RECAP *********************************************************************
+    googlecompute: default                    : ok=3    changed=2    unreachable=0    failed=0
+    googlecompute:
+==> googlecompute: Deleting instance...
+    googlecompute: Instance has been deleted!
+==> googlecompute: Creating image...
+==> googlecompute: Deleting disk...
+    googlecompute: Disk has been deleted!
+Build 'googlecompute' finished.
+
+==> Builds finished. The artifacts of successful builds are:
+--> googlecompute: A disk image was created: reddit-app-base-1519830198
+```
+</details>
+
+<details>
+  <summary>Click to see example of Ansible output</summary>
+
+```bash
+~/z37371c_infra/ansible > ansible-playbook -i inv/ site.yml 
+[DEPRECATION WARNING]: 'include' for playbook includes. You should use 'import_playbook' instead. This feature will be removed in version 2.8. Deprecation warnings can be disabled by 
+setting deprecation_warnings=False in ansible.cfg.
+
+PLAY [Configure MongoDB] *********************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************************************************************
+ok: [stage-reddit-db]
+
+TASK [Change mongo config file] **************************************************************************************************************************************************************
+changed: [stage-reddit-db]
+
+RUNNING HANDLER [restart mongod] *************************************************************************************************************************************************************
+changed: [stage-reddit-db]
+
+PLAY [Configure App] *************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************************************************************
+ok: [stage-reddit-app]
+
+TASK [Add unit file for Puma] ****************************************************************************************************************************************************************
+changed: [stage-reddit-app]
+
+TASK [Add config for DB connection] **********************************************************************************************************************************************************
+changed: [stage-reddit-app]
+
+TASK [enable puma] ***************************************************************************************************************************************************************************
+changed: [stage-reddit-app]
+
+RUNNING HANDLER [reload puma] ****************************************************************************************************************************************************************
+changed: [stage-reddit-app]
+
+PLAY [Deploy App] ****************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************************************************************
+ok: [stage-reddit-app]
+
+TASK [Fetch the latest version of application code] ******************************************************************************************************************************************
+changed: [stage-reddit-app]
+
+TASK [bundle install] ************************************************************************************************************************************************************************
+changed: [stage-reddit-app]
+
+RUNNING HANDLER [restart puma] ***************************************************************************************************************************************************************
+changed: [stage-reddit-app]
+
+PLAY RECAP ***********************************************************************************************************************************************************************************
+stage-reddit-app           : ok=9    changed=7    unreachable=0    failed=0   
+stage-reddit-db            : ok=3    changed=2    unreachable=0    failed=0  
+```
+</details>
+
+
+
 ## Homework 10
 Q: Install ansible, create configuration and inventory files. Try using different modules.  
 A: I have installed ansible and executed all the tasks within homework. No issues occured.  

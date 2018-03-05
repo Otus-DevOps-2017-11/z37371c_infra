@@ -27,7 +27,7 @@ resource "google_compute_instance" "app" {
     user        = "appuser"
     private_key = "${file(var.private_key_path)}"
   }
-
+/*
   provisioner "file" {
     content     = "${data.template_file.puma_unit.rendered}"
     destination = "/tmp/puma.service"
@@ -36,6 +36,7 @@ resource "google_compute_instance" "app" {
   provisioner "remote-exec" {
     script = "${path.module}/files/deploy.sh"
   }
+*/
 }
 
 resource "google_compute_address" "app_ip" {
@@ -54,11 +55,13 @@ resource "google_compute_firewall" "firewall_puma" {
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["${var.prefix}-reddit-app"]
 }
-
+/*
 data "template_file" "puma_unit" {
   template = "${file("${path.module}/files/puma.service.tpl")}"
 
   vars {
     db_url = "${var.db_url}"
   }
+
 }
+*/
