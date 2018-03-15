@@ -2,7 +2,7 @@ resource "google_compute_instance" "app" {
   name         = "${var.prefix}-reddit-app"
   machine_type = "g1-small"
   zone         = "${var.zone}"
-  tags         = ["${var.prefix}-reddit-app"]
+  tags         = ["${var.prefix}-reddit-app", "app", "${var.prefix}"]
 
   boot_disk {
     initialize_params {
@@ -49,7 +49,7 @@ resource "google_compute_firewall" "firewall_puma" {
 
   allow {
     protocol = "tcp"
-    ports    = ["9292"]
+    ports    = ["80", "9292"]
   }
 
   source_ranges = ["0.0.0.0/0"]

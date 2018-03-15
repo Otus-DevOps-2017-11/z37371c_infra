@@ -1,5 +1,10 @@
 # z3t3t1c_infra
 
+## Homework 12
+Q: Move playbooks into different roles, describe two environments, use nginx community role.  
+
+A: I have performed all the tasks with no issues. Created separate app and db roles, created prod and stage environments and installed nginx community role.
+
 ## Homework 11
 Q: Try different approaches on how to use ansible: single playbook with single play, single playbook with multiple plays, multiple playbooks. Familiarize yourself with tasks, handlers, templates and variables. Know how to use modules and cycles.  
 A: I have followed the instruction and performed all requred tasks without any issues. Before proceeding with this homework I commented out terraform provisioners in order to get clean environment.

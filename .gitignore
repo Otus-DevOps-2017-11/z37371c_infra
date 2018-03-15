@@ -6,3 +6,4 @@ variables.json
 .terraform/
 *.retry
 gce_ansible_service_account.json
+jdauphant.nginx
